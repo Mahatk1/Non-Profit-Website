@@ -180,27 +180,41 @@ Submit.addEventListener("click", (e) => {
   Message.value = ""
 })
 
-// Highlights — load thumbnail frame + play/pause on click
+// Highlights — thumbnail + play/pause
+function loadVideoThumbnail(video) {
+  const seek = () => { video.currentTime = 0.1 }
+  if (video.readyState >= 1) {
+    seek()
+  } else {
+    video.addEventListener("loadedmetadata", seek, { once: true })
+  }
+}
+
+// Use IntersectionObserver so thumbnails load the moment cards become visible
+// (videos inside a hidden section won't load metadata until they appear)
+const thumbObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const video = entry.target.querySelector("video")
+      if (video) loadVideoThumbnail(video)
+      thumbObserver.unobserve(entry.target)
+    }
+  })
+}, { threshold: 0.05 })
+
 document.querySelectorAll(".highlight-item").forEach((item) => {
   const video = item.querySelector("video")
   const btn = item.querySelector(".play-btn")
 
-  // Seek to 0.1s once metadata is ready so the browser paints a real frame
-  if (video.readyState >= 1) {
-    video.currentTime = 0.1
-  } else {
-    video.addEventListener("loadedmetadata", () => {
-      video.currentTime = 0.1
-    }, { once: true })
-  }
+  thumbObserver.observe(item)
 
   item.addEventListener("click", () => {
     if (video.paused) {
-      // Pause all other videos first
       document.querySelectorAll(".highlight-item video").forEach((v) => {
         if (v !== video) {
           v.pause()
           v.closest(".highlight-item").classList.remove("playing")
+          v.closest(".highlight-item").querySelector(".play-btn").innerHTML = '<i class="fas fa-play"></i>'
         }
       })
       video.play()
