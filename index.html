@@ -269,6 +269,10 @@
             </div>
             <div class="schedule-grid">
                 <div class="schedule-wrapper">
+                    <div class="schedule-label">
+                        <i class="fas fa-child"></i> Youth League
+                        <button value="youthschedule" class="viewSchedule"><i class="fas fa-expand-alt"></i> Full View</button>
+                    </div>
                     <div class="view-btn">
                         <button value="youthschedule" class="viewSchedule">
                             <i class="fas fa-expand"></i> View Youth League
@@ -277,6 +281,10 @@
                     <iframe src="https://scheduler.leaguelobster.com/1350932/youth-league/summer-2023/" class="styled-iframe"></iframe>
                 </div>
                 <div class="schedule-wrapper">
+                    <div class="schedule-label">
+                        <i class="fas fa-running"></i> Adult League
+                        <button value="adultschedule" class="viewSchedule"><i class="fas fa-expand-alt"></i> Full View</button>
+                    </div>
                     <div class="view-btn">
                         <button value="adultschedule" class="viewSchedule">
                             <i class="fas fa-expand"></i> View Adult League
@@ -295,8 +303,15 @@
             </div>
             <hr class="section-divider">
             <div class="Dashboard">
+                <div class="dashboard-header">
+                    <div class="dash-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div>
+                        <h3 class="dash-title">League Statistics</h3>
+                        <p class="dash-sub">Live standings, scores, and player stats for all active leagues.</p>
+                    </div>
+                </div>
                 <div class="stats">
-                    <iframe class="wuksD5" title="League Stats" name="htmlComp-iframe" width="100%" height="100%" allow="fullscreen" src="https://www-effyouth-org.filesusr.com/html/79d69d_a0d97d06fa17a01966eddeb2be6ab9eb.html"></iframe>
+                    <iframe class="wuksD5" title="League Stats" name="htmlComp-iframe" allow="fullscreen" src="https://www-effyouth-org.filesusr.com/html/79d69d_a0d97d06fa17a01966eddeb2be6ab9eb.html"></iframe>
                 </div>
             </div>
         </section>
@@ -305,12 +320,12 @@
 
     <!-- ===== NAV ===== -->
     <nav class="controls">
-        <div class="control active-btn" data-id="home"><i class="fas fa-home"></i></div>
-        <div class="control" data-id="about"><i class="fas fa-info-circle"></i></div>
-        <div class="control" data-id="portfolio"><i class="fas fa-images"></i></div>
-        <div class="control" data-id="blogs"><i class="fas fa-users"></i></div>
-        <div class="control" data-id="schedule"><i class="fas fa-calendar-alt"></i></div>
-        <div class="control" data-id="contact"><i class="fas fa-envelope"></i></div>
+        <div class="control active-btn" data-id="home" data-label="Home"><i class="fas fa-home"></i></div>
+        <div class="control" data-id="about" data-label="About"><i class="fas fa-info-circle"></i></div>
+        <div class="control" data-id="portfolio" data-label="Gallery"><i class="fas fa-images"></i></div>
+        <div class="control" data-id="blogs" data-label="Team"><i class="fas fa-users"></i></div>
+        <div class="control" data-id="schedule" data-label="Schedule"><i class="fas fa-calendar-alt"></i></div>
+        <div class="control" data-id="contact" data-label="Contact"><i class="fas fa-envelope"></i></div>
     </nav>
 
     <div class="theme-btn"><i class="fas fa-adjust"></i></div>

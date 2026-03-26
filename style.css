@@ -164,6 +164,9 @@ header.header {
   padding: 0;
   overflow: hidden;
   position: relative;
+  background-image:
+    radial-gradient(circle, var(--faint) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 .hero-content {
@@ -783,10 +786,56 @@ header.header {
 
 .schedule-wrapper {
   position: relative;
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--border);
   background-color: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.schedule-wrapper:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 8px 32px rgba(249, 115, 22, 0.08);
+}
+
+.schedule-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  gap: 0.75rem;
+}
+
+.schedule-label i:first-child {
+  color: var(--accent);
+  margin-right: 0.4rem;
+}
+
+.schedule-label button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.85rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.schedule-label button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .schedule-wrapper .view-btn {
@@ -885,14 +934,55 @@ header.header {
 
 .schedule-modal iframe { width: 100%; height: 100%; border: none; }
 
-.Dashboard { position: relative; min-height: 100vh; }
+.Dashboard {
+  margin-top: 1rem;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.dash-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dash-icon i { color: var(--accent); font-size: 1.3rem; }
+
+.dash-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.dash-sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stats {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow);
+}
 
 .wuksD5 {
-  position: absolute;
-  width: 70%;
-  height: 100%;
+  width: 100%;
+  height: 680px;
   border: none;
-  background: transparent;
+  display: block;
 }
 
 /* ===== NAV CONTROLS ===== */
@@ -926,6 +1016,32 @@ header.header {
   color: var(--muted);
   pointer-events: none;
 }
+
+.control {
+  position: relative;
+}
+
+.control::before {
+  content: attr(data-label);
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--bg-raised);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0.28rem 0.65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.control:hover::before { opacity: 1; }
 
 .control:hover {
   background-color: var(--bg-raised);
