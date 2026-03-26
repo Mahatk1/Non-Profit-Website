@@ -182,31 +182,29 @@ Submit.addEventListener("click", (e) => {
 
 // Highlights — thumbnail + play/pause
 function loadVideoThumbnail(video) {
-  const seek = () => { video.currentTime = 0.1 }
+  if (video.dataset.thumbLoaded) return
+  const seek = () => {
+    video.currentTime = 0.1
+    video.dataset.thumbLoaded = "1"
+  }
   if (video.readyState >= 1) {
     seek()
   } else {
+    // Force metadata fetch if browser skipped it (common for hidden sections)
+    if (video.readyState === 0) video.load()
     video.addEventListener("loadedmetadata", seek, { once: true })
   }
 }
 
-// Use IntersectionObserver so thumbnails load the moment cards become visible
-// (videos inside a hidden section won't load metadata until they appear)
-const thumbObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const video = entry.target.querySelector("video")
-      if (video) loadVideoThumbnail(video)
-      thumbObserver.unobserve(entry.target)
-    }
-  })
-}, { threshold: 0.05 })
+// Fire thumbnail loading the moment the Portfolio nav button is clicked —
+// this is more reliable than IntersectionObserver for tall off-screen cards
+document.querySelector('.control[data-id="portfolio"]').addEventListener("click", () => {
+  document.querySelectorAll(".highlight-item video").forEach(loadVideoThumbnail)
+})
 
 document.querySelectorAll(".highlight-item").forEach((item) => {
   const video = item.querySelector("video")
   const btn = item.querySelector(".play-btn")
-
-  thumbObserver.observe(item)
 
   item.addEventListener("click", () => {
     if (video.paused) {
