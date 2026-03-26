@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E&F Sports | Seattle Youth Basketball League</title>
+    <link rel="icon" type="image/jpeg" href="images/SnapInsta.to_428276235_2059105434473693_4818884216090014057_n.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- ===== LOADER ===== -->
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-logo">E<span>&</span>F</div>
+            <div class="loader-sub">SPORTS</div>
+            <div class="loader-bar"><div class="loader-fill"></div></div>
+        </div>
+    </div>
 
     <!-- ===== HERO ===== -->
     <header class="container header active" id="home">
@@ -72,7 +82,7 @@
                 <h2 class="section-title"><span>About</span> Us <span class="bg-text">About</span></h2>
                 <p class="section-sub">Building the next generation of leaders through basketball and community.</p>
             </div>
-            <div class="about-cards">
+            <div class="about-cards" data-animate>
                 <div class="about-card">
                     <div class="about-icon"><i class="fas fa-child"></i></div>
                     <h3>Our Youth</h3>
@@ -98,7 +108,7 @@
                 <p class="section-sub">More than just a sport — it's Brotherhood. Be part of the action.</p>
             </div>
             <!-- Photos grid — uniform 4-column -->
-            <div class="gallery-grid">
+            <div class="gallery-grid" data-animate>
                 <div class="gallery-item"><img src="images/E&F pic 1.jpeg" alt="E&F Sports"><div class="gallery-overlay"><span>Follow Us</span><div class="g-icons"><a href="https://www.instagram.com/efsportss/" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.tiktok.com/@efsports22" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://www.youtube.com/@Ef_sports" target="_blank"><i class="fab fa-youtube"></i></a></div></div></div>
                 <div class="gallery-item"><img src="images/E&F pic 2.jpeg" alt="E&F Sports"><div class="gallery-overlay"><span>Follow Us</span><div class="g-icons"><a href="https://www.instagram.com/efsportss/" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.tiktok.com/@efsports22" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://www.youtube.com/@Ef_sports" target="_blank"><i class="fab fa-youtube"></i></a></div></div></div>
                 <div class="gallery-item"><img src="images/E&F pic 3.jpeg" alt="E&F Sports"><div class="gallery-overlay"><span>Follow Us</span><div class="g-icons"><a href="https://www.instagram.com/efsportss/" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.tiktok.com/@efsports22" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://www.youtube.com/@Ef_sports" target="_blank"><i class="fab fa-youtube"></i></a></div></div></div>
@@ -122,7 +132,7 @@
                 <h3 class="section-title"><span>Seattle 2026</span> Week 2 Champions <span class="bg-text">Champions</span></h3>
                 <p class="section-sub">Watch the best moments from E&amp;F Sports.</p>
             </div>
-            <div class="highlights-grid">
+            <div class="highlights-grid" data-animate>
                 <div class="highlight-item">
                     <video src="images/SnapInsta.to_AQMJPZuBBXPo7uNBzxXLk2cJ_punh3Qo9lIUSKiFOH5xP75eV2chWDjKEVhYqS49kfyXAihO_xFuc8FfpQC7VwIh.mp4" loop muted playsinline preload="metadata"></video>
                     <div class="highlight-overlay"><button class="play-btn"><i class="fas fa-play"></i></button></div>
@@ -140,6 +150,38 @@
                     <div class="highlight-overlay"><button class="play-btn"><i class="fas fa-play"></i></button></div>
                 </div>
             </div>
+
+            <!-- Champions -->
+            <div class="section-header" style="margin-top:4rem;">
+                <h3 class="section-title"><span>Past</span> Champions <span class="bg-text">Champs</span></h3>
+                <p class="section-sub">Celebrating the teams that rose to the top.</p>
+            </div>
+            <div class="champs-grid" data-animate>
+                <div class="champ-card">
+                    <div class="champ-badge"><i class="fas fa-trophy"></i> Season 5 — 2026</div>
+                    <img src="images/SnapInsta.to_501932631_18029284496664012_3415700799252786069_n.jpg" alt="Season 5 Champions">
+                    <div class="champ-info">
+                        <h4>Week 2 Champions</h4>
+                        <p>Ramadan Hoops Seattle 2026 — 96 players, 4 crowned champions.</p>
+                    </div>
+                </div>
+                <div class="champ-card">
+                    <div class="champ-badge"><i class="fas fa-medal"></i> Season 5 — 2026</div>
+                    <img src="images/SnapInsta.to_501778478_18029284541664012_8584750500896984896_n.jpg" alt="MVP Award">
+                    <div class="champ-info">
+                        <h4>MVP Award Ceremony</h4>
+                        <p>Honoring the most outstanding player of the season.</p>
+                    </div>
+                </div>
+                <div class="champ-card">
+                    <div class="champ-badge"><i class="fas fa-star"></i> Season 5 — 2026</div>
+                    <img src="images/SnapInsta.to_501661914_18029284523664012_7221884519717833951_n.jpg" alt="Top Players">
+                    <div class="champ-info">
+                        <h4>Top 3 Players</h4>
+                        <p>The stars of Ramadan Hoops Week 2, crowned with medals.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- ===== ORGANIZERS ===== -->
@@ -148,7 +190,7 @@
                 <h2 class="section-title"><span>Our</span> Team <span class="bg-text">Team</span></h2>
                 <p class="section-sub">The people who make E&amp;F Sports possible.</p>
             </div>
-            <div class="team-grid">
+            <div class="team-grid" data-animate>
                 <div class="team-card">
                     <div class="team-photo">
                         <img src="images/chiefeff.webp" alt="Elias Hassan">
@@ -201,7 +243,7 @@
                 <h2 class="section-title"><span>Get In</span> Touch <span class="bg-text">Contact</span></h2>
                 <p class="section-sub">Have questions? We'd love to hear from you.</p>
             </div>
-            <div class="contact-layout">
+            <div class="contact-layout" data-animate>
                 <div class="contact-info">
                     <h4>Connect with Us</h4>
                     <blockquote>
@@ -259,7 +301,7 @@
                 <h2 class="section-title"><span>Schedule</span> &amp; Stats <span class="bg-text">Schedule</span></h2>
                 <p class="section-sub">View game schedules and stats for both leagues.</p>
             </div>
-            <div class="schedule-grid">
+            <div class="schedule-grid" data-animate>
                 <div class="schedule-wrapper">
                     <div class="schedule-label">
                         <i class="fas fa-child"></i> Youth League
@@ -310,8 +352,46 @@
 
     </main>
 
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">E<span>&</span>F Sports</div>
+                <p>Empowering Seattle's youth through basketball, community, and education since 2020.</p>
+                <div class="footer-social-icons">
+                    <a href="https://www.instagram.com/efsportss/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@efsports22" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@Ef_sports" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a class="footer-nav-link" data-id="home">Home</a></li>
+                    <li><a class="footer-nav-link" data-id="about">About</a></li>
+                    <li><a class="footer-nav-link" data-id="portfolio">Gallery</a></li>
+                    <li><a class="footer-nav-link" data-id="blogs">Our Team</a></li>
+                    <li><a class="footer-nav-link" data-id="schedule">Schedule</a></li>
+                    <li><a class="footer-nav-link" data-id="contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h5>Contact</h5>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Seattle, Washington</li>
+                    <li><i class="fas fa-envelope"></i> Efsports022@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> 206-209-8603</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 E&amp;F Sports. All rights reserved. Seattle, WA.</p>
+        </div>
+    </footer>
+
     <!-- ===== NAV ===== -->
-    <nav class="controls">
+    <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    <nav class="controls" id="mainNav">
         <div class="control active-btn" data-id="home" data-label="Home"><i class="fas fa-home"></i></div>
         <div class="control" data-id="about" data-label="About"><i class="fas fa-info-circle"></i></div>
         <div class="control" data-id="portfolio" data-label="Gallery"><i class="fas fa-images"></i></div>
@@ -357,6 +437,17 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <!-- ===== LIGHTBOX ===== -->
+    <div id="lightbox" class="lightbox">
+        <button class="lb-close"><i class="fas fa-times"></i></button>
+        <button class="lb-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="lb-next"><i class="fas fa-chevron-right"></i></button>
+        <div class="lb-img-wrap">
+            <img id="lb-img" src="" alt="Gallery image">
+        </div>
+        <div class="lb-counter"><span id="lb-current">1</span> / <span id="lb-total">1</span></div>
     </div>
 
     <script src="https://smtpjs.com/v3/smtp.js" async></script>

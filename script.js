@@ -11,13 +11,30 @@
 //         document.body.classList.toggle("light-mode");
 //     })
 // })();
+// Page title map
+const sectionTitles = {
+  home: "Home",
+  about: "About",
+  portfolio: "Gallery",
+  blogs: "Our Team",
+  schedule: "Schedule",
+  contact: "Contact",
+}
+
+function navigate(id) {
+  document.querySelector(".active-btn").classList.remove("active-btn")
+  document.querySelector(`.control[data-id="${id}"]`).classList.add("active-btn")
+  document.querySelector(".active").classList.remove("active")
+  document.getElementById(id).classList.add("active")
+  document.title = `E&F Sports | ${sectionTitles[id] || id}`
+  // Close mobile nav if open
+  document.getElementById("mainNav").classList.remove("nav-open")
+}
+
 function initialize() {
   ;[...document.querySelectorAll(".control")].forEach((button) => {
     button.addEventListener("click", function () {
-      document.querySelector(".active-btn").classList.remove("active-btn")
-      this.classList.add("active-btn")
-      document.querySelector(".active").classList.remove("active")
-      document.getElementById(button.dataset.id).classList.add("active")
+      navigate(button.dataset.id)
     })
   })
   document.querySelector(".theme-btn").addEventListener("click", () => {
@@ -180,7 +197,85 @@ Submit.addEventListener("click", (e) => {
   Message.value = ""
 })
 
-// Highlights — thumbnail + play/pause
+// ===== LOADER =====
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("loader").classList.add("hidden")
+  }, 1400)
+})
+
+// ===== SCROLL ANIMATIONS =====
+const animObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("in-view")
+      animObserver.unobserve(entry.target)
+    }
+  })
+}, { threshold: 0.12 })
+
+document.querySelectorAll("[data-animate]").forEach((el) => animObserver.observe(el))
+
+// ===== FOOTER NAV LINKS =====
+document.querySelectorAll(".footer-nav-link").forEach((link) => {
+  link.addEventListener("click", () => navigate(link.dataset.id))
+})
+
+// ===== HAMBURGER =====
+document.getElementById("hamburger").addEventListener("click", () => {
+  document.getElementById("mainNav").classList.toggle("nav-open")
+})
+
+// ===== LIGHTBOX =====
+const lightbox   = document.getElementById("lightbox")
+const lbImg      = document.getElementById("lb-img")
+const lbCurrent  = document.getElementById("lb-current")
+const lbTotal    = document.getElementById("lb-total")
+const galleryImgs = [...document.querySelectorAll(".gallery-item img")]
+let lbIndex = 0
+
+lbTotal.textContent = galleryImgs.length
+
+function openLightbox(index) {
+  lbIndex = index
+  lbImg.src = galleryImgs[lbIndex].src
+  lbCurrent.textContent = lbIndex + 1
+  lightbox.classList.add("open")
+  document.body.style.overflow = "hidden"
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("open")
+  document.body.style.overflow = ""
+}
+
+function lbMove(dir) {
+  lbIndex = (lbIndex + dir + galleryImgs.length) % galleryImgs.length
+  lbImg.src = galleryImgs[lbIndex].src
+  lbCurrent.textContent = lbIndex + 1
+}
+
+galleryImgs.forEach((img, i) => {
+  img.parentElement.style.cursor = "pointer"
+  img.parentElement.addEventListener("click", () => openLightbox(i))
+})
+
+lightbox.querySelector(".lb-close").addEventListener("click", closeLightbox)
+lightbox.querySelector(".lb-prev").addEventListener("click", () => lbMove(-1))
+lightbox.querySelector(".lb-next").addEventListener("click", () => lbMove(1))
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) closeLightbox()
+})
+
+document.addEventListener("keydown", (e) => {
+  if (!lightbox.classList.contains("open")) return
+  if (e.key === "Escape")      closeLightbox()
+  if (e.key === "ArrowLeft")   lbMove(-1)
+  if (e.key === "ArrowRight")  lbMove(1)
+})
+
+// ===== Highlights — thumbnail + play/pause =====
 function loadVideoThumbnail(video) {
   if (video.dataset.thumbLoaded) return
   const seek = () => {
