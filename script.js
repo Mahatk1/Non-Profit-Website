@@ -197,12 +197,8 @@ Submit.addEventListener("click", (e) => {
   Message.value = ""
 })
 
-// ===== LOADER =====
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    document.getElementById("loader").classList.add("hidden")
-  }, 300)
-})
+
+document.getElementById("loader").classList.add("hidden")
 
 // ===== SCROLL ANIMATIONS =====
 const animObserver = new IntersectionObserver((entries) => {
