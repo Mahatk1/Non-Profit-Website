@@ -1440,7 +1440,7 @@ header.header {
   width: 0;
   background: linear-gradient(90deg, var(--accent), var(--accent-dark));
   border-radius: 3px;
-  animation: loaderFill 1.3s ease forwards;
+  animation: loaderFill 0.75s ease forwards;
 }
 
 @keyframes loaderFill {
