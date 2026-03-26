@@ -180,10 +180,19 @@ Submit.addEventListener("click", (e) => {
   Message.value = ""
 })
 
-// Highlights — play/pause on click
+// Highlights — load thumbnail frame + play/pause on click
 document.querySelectorAll(".highlight-item").forEach((item) => {
   const video = item.querySelector("video")
   const btn = item.querySelector(".play-btn")
+
+  // Seek to 0.1s once metadata is ready so the browser paints a real frame
+  if (video.readyState >= 1) {
+    video.currentTime = 0.1
+  } else {
+    video.addEventListener("loadedmetadata", () => {
+      video.currentTime = 0.1
+    }, { once: true })
+  }
 
   item.addEventListener("click", () => {
     if (video.paused) {
