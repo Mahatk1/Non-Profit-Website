@@ -1396,7 +1396,7 @@ header.header {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: opacity 0.55s ease, visibility 0.55s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 #loader.hidden {
@@ -1440,7 +1440,7 @@ header.header {
   width: 0;
   background: linear-gradient(90deg, var(--accent), var(--accent-dark));
   border-radius: 3px;
-  animation: loaderFill 0.75s ease forwards;
+  animation: loaderFill 0.4s ease forwards;
 }
 
 @keyframes loaderFill {
