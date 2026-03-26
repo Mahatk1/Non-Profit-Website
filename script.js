@@ -198,7 +198,7 @@ Submit.addEventListener("click", (e) => {
 })
 
 // ===== LOADER =====
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     document.getElementById("loader").classList.add("hidden")
   }, 300)
