@@ -464,6 +464,78 @@ header.header {
   transform: scale(1.15);
 }
 
+/* ===== HIGHLIGHTS ===== */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.highlight-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: #000;
+  aspect-ratio: 9 / 16;
+  cursor: pointer;
+}
+
+.highlight-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.highlight-item:hover video {
+  transform: scale(1.04);
+}
+
+.highlight-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  transition: background 0.3s ease;
+}
+
+.highlight-item.playing .highlight-overlay {
+  background: transparent;
+}
+
+.highlight-item.playing .play-btn {
+  opacity: 0;
+}
+
+.highlight-item:hover .highlight-overlay {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.play-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s ease, background 0.2s ease;
+  padding-left: 4px; /* optical center for play icon */
+}
+
+.play-btn:hover {
+  background: var(--accent-dark);
+  transform: scale(1.1);
+}
+
 /* ===== TEAM / ORGANIZERS ===== */
 .team-grid {
   display: grid;
@@ -1145,6 +1217,7 @@ header.header {
   .gallery-item.g-wide { grid-column: span 2; }
   .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
   .schedule-grid  { grid-template-columns: 1fr; }
+  .highlights-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -1190,4 +1263,5 @@ header.header {
   .about-cards { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.1rem; }
   .amount-row .amount { padding: 0.4rem 0.9rem; font-size: 0.82rem; }
+  .highlights-grid { grid-template-columns: 1fr; }
 }

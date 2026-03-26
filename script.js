@@ -179,3 +179,33 @@ Submit.addEventListener("click", (e) => {
   SUBJECT.value = ""
   Message.value = ""
 })
+
+// Highlights — play/pause on click
+document.querySelectorAll(".highlight-item").forEach((item) => {
+  const video = item.querySelector("video")
+  const btn = item.querySelector(".play-btn")
+
+  item.addEventListener("click", () => {
+    if (video.paused) {
+      // Pause all other videos first
+      document.querySelectorAll(".highlight-item video").forEach((v) => {
+        if (v !== video) {
+          v.pause()
+          v.closest(".highlight-item").classList.remove("playing")
+        }
+      })
+      video.play()
+      item.classList.add("playing")
+      btn.innerHTML = '<i class="fas fa-pause"></i>'
+    } else {
+      video.pause()
+      item.classList.remove("playing")
+      btn.innerHTML = '<i class="fas fa-play"></i>'
+    }
+  })
+
+  video.addEventListener("ended", () => {
+    item.classList.remove("playing")
+    btn.innerHTML = '<i class="fas fa-play"></i>'
+  })
+})
